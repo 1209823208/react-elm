@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route,Redirect,Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
 
-import './App.css';
-
+import './App.scss';
+import 'antd/dist/antd.css';
+import 'font-awesome/css/font-awesome.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from 'containers/login/index';
 import {route_list} from './routing'
 class App extends Component {
