@@ -1,7 +1,7 @@
 import MUtil from 'service/axios';
-const _mm = new MUtil();
 import axios from 'axios';
 import { _URL } from 'service/axios';
+const _mm = new MUtil();
 export default class User {
     login(params_obj) {
         let url = 'admin/login',
