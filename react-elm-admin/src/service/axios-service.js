@@ -19,7 +19,7 @@ function getHeader() {
     return authHeader;
 }
 export default class MUtil {
-    get(url, params, withCredentials = false) {
+    get(url, params={}, withCredentials = false) {
         return axios.get(_URL(url), {
                 params: params,
                 withCredentials: withCredentials,
@@ -34,7 +34,7 @@ export default class MUtil {
                 return this.handleError(error)
             });
     }
-    post(url, params, withCredentials = false) {
+    post(url, params={}, withCredentials = false) {
         return axios.post(_URL(url), params, {
                 withCredentials: withCredentials,
                 headers: {

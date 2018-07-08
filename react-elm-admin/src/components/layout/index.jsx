@@ -2,7 +2,7 @@ import React from 'react';
 import './index.scss';
 import NavSide from 'components/nav-side/index';
 import NavFooter from 'components/nav-footer/index';
-import { Layout, Breadcrumb, Menu, Dropdown, Icon, message, Row, Col } from 'antd';
+import { Layout, Breadcrumb, Menu, Dropdown, message, Row, Col } from 'antd';
 
 const { Content } = Layout;
 export default class LayoutIndex extends React.Component {
