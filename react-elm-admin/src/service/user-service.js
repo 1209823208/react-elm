@@ -16,6 +16,18 @@ export default class User {
             return res;
         });
     }
+    logout(){
+        let url = 'admin/singout',
+            params = {};
+        return _mm.get(url, params, true);
+    }
+    getUserList(paramsObj){
+        let offset = paramsObj.current>0?paramsObj.current-1:0,
+        limit=paramsObj.pageSize;
+        let url = '/v1/users/list?offset='+offset+'&limit='+limit,
+            params = {};
+        return _mm.get(url, params);
+    }
     userCount(date) {
         let url = '/statis/user/' + date + '/count';
         return _mm.get(url);

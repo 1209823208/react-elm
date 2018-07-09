@@ -1,13 +1,15 @@
 import React from 'react';
 import './index.scss';
 import { Layout, Menu, Icon } from 'antd';
+import { Link } from 'react-router-dom';
+
 const { Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 export default class NavSide extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			name:''
+			name: ''
 		};
 	}
 	render() {
@@ -19,7 +21,8 @@ export default class NavSide extends React.Component {
 						<Icon type="appstore" />
 						<span>首页</span>
 					</Menu.Item>
-					<SubMenu key="2"
+					<SubMenu
+						key="2"
 						title={
 							<span>
 								<Icon type="file" />
@@ -27,13 +30,16 @@ export default class NavSide extends React.Component {
 							</span>
 						}
 					>
-						<Menu.Item key="3">用户列表</Menu.Item>
+						<Menu.Item key="3">
+							<Link to={'/user'}>用户列表</Link>
+						</Menu.Item>
 						<Menu.Item key="4">商家列表</Menu.Item>
 						<Menu.Item key="5">食品列表</Menu.Item>
 						<Menu.Item key="6">订单列表</Menu.Item>
 						<Menu.Item key="7">管理员列表</Menu.Item>
 					</SubMenu>
-					<SubMenu key="8"
+					<SubMenu
+						key="8"
 						title={
 							<span>
 								<Icon type="plus" />
@@ -44,7 +50,8 @@ export default class NavSide extends React.Component {
 						<Menu.Item key="9">添加商铺</Menu.Item>
 						<Menu.Item key="10">添加商品</Menu.Item>
 					</SubMenu>
-					<SubMenu key="11"
+					<SubMenu
+						key="11"
 						title={
 							<span>
 								<Icon type="star-o" />
@@ -54,7 +61,8 @@ export default class NavSide extends React.Component {
 					>
 						<Menu.Item key="12">用户分布</Menu.Item>
 					</SubMenu>
-					<SubMenu key="13"
+					<SubMenu
+						key="13"
 						title={
 							<span>
 								<Icon type="form" />
@@ -64,7 +72,8 @@ export default class NavSide extends React.Component {
 					>
 						<Menu.Item key="14">文本编辑</Menu.Item>
 					</SubMenu>
-					<SubMenu key="15"
+					<SubMenu
+						key="15"
 						title={
 							<span>
 								<Icon type="setting" />
@@ -74,7 +83,8 @@ export default class NavSide extends React.Component {
 					>
 						<Menu.Item key="16">管理员设置</Menu.Item>
 					</SubMenu>
-					<SubMenu key="17"
+					<SubMenu
+						key="17"
 						title={
 							<span>
 								<Icon type="exclamation-circle" />

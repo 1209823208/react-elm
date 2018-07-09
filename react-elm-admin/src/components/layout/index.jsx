@@ -1,23 +1,33 @@
 import React from 'react';
+import {withRouter} from "react-router-dom";
+
 import './index.scss';
 import NavSide from 'components/nav-side/index';
 import NavFooter from 'components/nav-footer/index';
 import { Layout, Breadcrumb, Menu, Dropdown, message, Row, Col } from 'antd';
-
+import User from 'service/user-service';
+const _user = new User();
 const { Content } = Layout;
-export default class LayoutIndex extends React.Component {
+ class LayoutIndex extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			name: ''
 		};
 	}
-	onClick = function({ key }) {
-		message.info(`Click on item ${key}`);
+	handleMenuClick = (e) => {
+		if(e.key ==="2"){
+			_user.logout().then((res)=>{
+				message.info(`${res.success}`);
+				this.props.history.push('/login'); // 路由跳转	
+			})
+		}else{
+			this.props.history.push('/home'); // 路由跳转	
+		}
 	};
 	render() {
 		const menu = (
-			<Menu onClick="()=>this.onClick()">
+			<Menu onClick={this.handleMenuClick}>
 				<Menu.Item key="1">首页</Menu.Item>
 				<Menu.Item key="2">退出</Menu.Item>
 			</Menu>
@@ -38,11 +48,15 @@ export default class LayoutIndex extends React.Component {
 											</Breadcrumb>
 										</Content>
 									</Col>
-									<Col span={2} style={{lineHeight:1.8}}>
+									<Col span={2} style={{ lineHeight: 1.8 }}>
 										<Content>
 											<Dropdown overlay={menu}>
-												<a className="ant-dropdown-link" href="javascript:void(0)" style={{ fontSize:30}} >
-												    <i className="fa fa-user-circle" aria-hidden="true"></i>
+												<a
+													className="ant-dropdown-link"
+													href="javascript:void(0)"
+													style={{ fontSize: 30 }}
+												>
+													<i className="fa fa-user-circle" aria-hidden="true" />
 												</a>
 											</Dropdown>
 										</Content>
@@ -58,3 +72,5 @@ export default class LayoutIndex extends React.Component {
 		);
 	}
 }
+export default withRouter(LayoutIndex);
+
