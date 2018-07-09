@@ -1,5 +1,46 @@
-.color-box{
+.color-box {
   display: block;
   text-align: center;
   height: 100px;
+}
+
+.gutter-example .ant-row>div {
+  background: transparent;
+  border: 0;
+}
+.gutter-example{
+  margin-bottom: 50px;
+}
+
+.gutter-example .gutter-row .gutter-box {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  border-radius: 6px;
+  background: #e5e9f2;
+  border-color: transparent;
+  height: 40px;
+}
+
+.gutter-example .gutter-row .gutter-box.current-data {
+  background: #ff9800;
+  font-size: 22px;
+  color: #fff;
+  display: inline-block;
+}
+
+.gutter-example .gutter-row .gutter-box.all-data {
+  background: #20a0ff;
+  font-size: 22px;
+  color: #fff;
+  display: inline-block;
+}
+
+.gutter-example .second-count-margin {
+  margin-top: 10px;
+}
+.gutter-example .gutter-row .gutter-box .data-num{
+  color: #333;
+  font-size: 26px;
 }
