@@ -33,7 +33,9 @@ export default class NavSide extends React.Component {
 						<Menu.Item key="3">
 							<Link to={'/user'}>用户列表</Link>
 						</Menu.Item>
-						<Menu.Item key="4">商家列表</Menu.Item>
+						<Menu.Item key="4">
+							<Link to={'/shop'}>商家列表</Link>
+						</Menu.Item>
 						<Menu.Item key="5">食品列表</Menu.Item>
 						<Menu.Item key="6">订单列表</Menu.Item>
 						<Menu.Item key="7">管理员列表</Menu.Item>
