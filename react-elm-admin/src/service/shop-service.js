@@ -34,7 +34,17 @@ export default class ShopService {
                     children: child_cat
                 };
             })
-            return catArr;
+            return Promise.resolve(catArr);
         });
+    }
+    updateShopData(paramsObj) {
+        let url = 'shopping/updateshop',
+            params = paramsObj;
+        return _mm.post(url, params);
+    }
+    delShop(id){
+        let url = 'shopping/restaurant/'+id,
+            params = {};
+        return _mm.delete(url, params);
     }
 }

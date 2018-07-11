@@ -19,7 +19,7 @@ export default class User {
     logout(){
         let url = 'admin/singout',
             params = {};
-        return _mm.get(url, params, true);
+        return _mm.get(url, params, false);
     }
     getUserList(paramsObj){
         let offset = paramsObj.current>0?paramsObj.current-1:0,

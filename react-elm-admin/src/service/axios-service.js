@@ -19,7 +19,7 @@ function getHeader() {
     return authHeader;
 }
 export default class MUtil {
-    get(url, params={}, withCredentials = false) {
+    get(url, params = {}, withCredentials = true) {
         return axios.get(_URL(url), {
                 params: params,
                 withCredentials: withCredentials,
@@ -34,8 +34,23 @@ export default class MUtil {
                 return this.handleError(error)
             });
     }
-    post(url, params={}, withCredentials = false) {
+    post(url, params = {}, withCredentials = true) {
         return axios.post(_URL(url), params, {
+                withCredentials: withCredentials,
+                headers: {
+                    Authorization: getHeader()
+                }
+            })
+            .then((res) => {
+                return this.handleSuccess(res)
+            })
+            .catch((error) => {
+                return this.handleError(error)
+            });
+    }
+    delete(url, params = {}, withCredentials = true) {
+        return axios.delete(_URL(url), {
+                params: params,
                 withCredentials: withCredentials,
                 headers: {
                     Authorization: getHeader()
@@ -52,6 +67,10 @@ export default class MUtil {
     handleSuccess(res) {
         let body = res;
         if (typeof body['data'] !== 'undefined') {
+            if (typeof body['data']['status'] !== 'undefined' && body['data'].status === 0 && body['data'].type === 'ERROR_SESSION') {
+                window.location.href = '/login';
+                return '';
+            }
             return Promise.resolve(body['data'] || []);
         }
         return Promise.resolve(body);

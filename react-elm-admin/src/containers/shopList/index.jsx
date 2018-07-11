@@ -1,7 +1,6 @@
 import React from 'react';
 import './index.scss';
-import { Table } from 'antd';
-import { Row, Col } from 'antd';
+import { Table,Row, Col ,message} from 'antd';
 
 import ShopEdit from 'containers/shopList/edit';
 import ShopService from 'service/shop-service';
@@ -129,12 +128,27 @@ export default class ShopList extends React.Component {
 		);
 	};
 	showModal = (res) => {
-		console.log('res', res);
 		this.setState({
 			visible: true,
 			shopDetail:res
 		});
 	};
+	delShop = (res)=>{
+		_shop.delShop(res.id).then((res)=>{
+			if(res.status === 0){
+				message.error(res.message);
+				return '';
+			}
+		})
+	}
+	changeVisible(isUpdate=0){
+		this.setState({
+			visible: false,
+		});
+		if(isUpdate === 1){
+			this.getShopList();
+		}
+	}
 	
 	render() {
 		const columns = [
@@ -156,7 +170,7 @@ export default class ShopList extends React.Component {
 							<button className="btns">添加食品</button>
 						</a>
 						<a href="javascript:;">
-							<button className="btns">删除</button>
+							<button className="btns" onClick={() => this.delShop(record)}>删除</button>
 						</a>
 					</div>
 				)
@@ -173,7 +187,11 @@ export default class ShopList extends React.Component {
 					onChange={this.handleTableChange}
 					expandedRowRender={(record) => this.expandedRowRender(record)}
 				/>
-				<ShopEdit visible={this.state.visible} shopDetail={this.state.shopDetail}/>
+				{
+					this.state.visible?<ShopEdit visible={this.state.visible} shopDetail={this.state.shopDetail} changeVisible={(isUpdate)=>this.changeVisible(isUpdate)}/>:''
+				}
+				
+				 {/* <ShopEdit visible={this.state.visible} shopDetail={this.state.shopDetail} changeVisible={()=>this.changeVisible()}/> */}
 			</div>
 		);
 	}

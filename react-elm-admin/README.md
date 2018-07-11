@@ -4,7 +4,7 @@
 ```
 ## 技术栈
 ```
-  react-router-dom4
+  react16.4+react-router-dom4+axios
 ```
 ##  第三方插件
 ```
@@ -16,9 +16,14 @@
 ```
 # 功能列表
 
-- [x] 登陆/注销 -- 完成 
-- [x] 首页 -- 完成
+- [x] 登陆/注销
+- [x] 首页
   ```
     echarts图标
     componentDidUpdate生命周期-父子之间传递异步
+  ```
+- [x] 商家列表
+ ```
+    Object.assign合并两个对象
+    componentWillReceiveProps生命周期-父子之间传递异步
   ```
