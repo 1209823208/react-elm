@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './index.scss';
-import { Table,Row, Col ,message} from 'antd';
+import { Table, Row, Col, message } from 'antd';
 
 import ShopEdit from 'containers/shopList/edit';
 import ShopService from 'service/shop-service';
@@ -19,7 +20,7 @@ export default class ShopList extends React.Component {
 			longitude: '',
 			loading: false,
 			visible: false,
-			shopDetail:{}
+			shopDetail: {}
 		};
 	}
 	componentDidMount() {
@@ -130,26 +131,26 @@ export default class ShopList extends React.Component {
 	showModal = (res) => {
 		this.setState({
 			visible: true,
-			shopDetail:res
+			shopDetail: res
 		});
 	};
-	delShop = (res)=>{
-		_shop.delShop(res.id).then((res)=>{
-			if(res.status === 0){
+	delShop = (res) => {
+		_shop.delShop(res.id).then((res) => {
+			if (res.status === 0) {
 				message.error(res.message);
 				return '';
 			}
-		})
-	}
-	changeVisible(isUpdate=0){
-		this.setState({
-			visible: false,
 		});
-		if(isUpdate === 1){
+	};
+	changeVisible(isUpdate = 0) {
+		this.setState({
+			visible: false
+		});
+		if (isUpdate === 1) {
 			this.getShopList();
 		}
 	}
-	
+
 	render() {
 		const columns = [
 			{ title: '店铺名称', dataIndex: 'name', key: 'name', width: '20%' },
@@ -166,11 +167,17 @@ export default class ShopList extends React.Component {
 								编辑
 							</button>
 						</a>
+
+						<Link to={`/addGoods/${record.id}`}>
+							<button className="btns" onClick={() => this.showModal(record)}>
+								添加食品
+							</button>
+						</Link>
+
 						<a href="javascript:;">
-							<button className="btns">添加食品</button>
-						</a>
-						<a href="javascript:;">
-							<button className="btns" onClick={() => this.delShop(record)}>删除</button>
+							<button className="btns" onClick={() => this.delShop(record)}>
+								删除
+							</button>
 						</a>
 					</div>
 				)
@@ -187,11 +194,17 @@ export default class ShopList extends React.Component {
 					onChange={this.handleTableChange}
 					expandedRowRender={(record) => this.expandedRowRender(record)}
 				/>
-				{
-					this.state.visible?<ShopEdit visible={this.state.visible} shopDetail={this.state.shopDetail} changeVisible={(isUpdate)=>this.changeVisible(isUpdate)}/>:''
-				}
-				
-				 {/* <ShopEdit visible={this.state.visible} shopDetail={this.state.shopDetail} changeVisible={()=>this.changeVisible()}/> */}
+				{this.state.visible ? (
+					<ShopEdit
+						visible={this.state.visible}
+						shopDetail={this.state.shopDetail}
+						changeVisible={(isUpdate) => this.changeVisible(isUpdate)}
+					/>
+				) : (
+					''
+				)}
+
+				{/* <ShopEdit visible={this.state.visible} shopDetail={this.state.shopDetail} changeVisible={()=>this.changeVisible()}/> */}
 			</div>
 		);
 	}
