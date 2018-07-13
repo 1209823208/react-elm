@@ -161,7 +161,6 @@ export default class AddGoods extends React.Component {
 			message.info(res.success);
 			if (res.status === 1) {
 				// clear input
-				console.log('this.refs', this.refs);
 				let newAddGoods = {
 					// 存储商品信息
 					activity: '',
@@ -181,15 +180,10 @@ export default class AddGoods extends React.Component {
 						key: 0
 					}
 				];
-				this.setState(
-					{
-						addGoods: newAddGoods,
-						specsArr: newSpecsArr
-					},
-					() => {
-						console.log('this.state', this.state);
-					}
-				);
+				this.setState({
+					addGoods: newAddGoods,
+					specsArr: newSpecsArr
+				});
 			}
 		});
 	}
@@ -197,7 +191,7 @@ export default class AddGoods extends React.Component {
 	removeSpecs(id) {
 		let m = this.state.specsArr;
 		if (m.length > 0) {
-			m.splice(id);
+			m.splice(id,1);
 			this.setState({
 				specsArr: m
 			});
@@ -367,7 +361,7 @@ export default class AddGoods extends React.Component {
 						</Col>
 						<Col className="gutter-row" span={20}>
 							<Input
-								defaultValue={this.state.addGoods.name}
+								value={this.state.addGoods.name}
 								ref="goods_name"
 								name="name"
 								onChange={(e) => {
@@ -382,7 +376,7 @@ export default class AddGoods extends React.Component {
 						</Col>
 						<Col className="gutter-row" span={20}>
 							<Input
-								defaultValue={this.state.addGoods.activity}
+								value={this.state.addGoods.activity}
 								ref="goods_activity"
 								name="activity"
 								onChange={(e) => {
@@ -397,7 +391,7 @@ export default class AddGoods extends React.Component {
 						</Col>
 						<Col className="gutter-row" span={20}>
 							<Input
-								defaultValue={this.state.addGoods.description}
+								value={this.state.addGoods.description}
 								ref="goods_description"
 								name="description"
 								onChange={(e) => {
@@ -447,9 +441,9 @@ export default class AddGoods extends React.Component {
 								</Col>
 								<Col className="gutter-row" span={10}>
 									<InputNumber
-										min={0}
+										min={1}
 										max={10}
-										defaultValue={this.state.specsArr[0].packing_fee}
+										defaultValue={1}
 										onChange={(e) => this.onChangeFree(e)}
 									/>
 								</Col>
@@ -462,7 +456,7 @@ export default class AddGoods extends React.Component {
 									<InputNumber
 										min={1}
 										max={100}
-										defaultValue={this.state.specsArr[0].price}
+										defaultValue={20}
 										onChange={(e) => this.onChangePrice(e)}
 									/>
 								</Col>
@@ -524,7 +518,7 @@ export default class AddGoods extends React.Component {
 								<InputNumber
 									min={0}
 									max={10}
-									defaultValue={0}
+									defaultValue={1}
 									onChange={(e) => this.onChangeFree(e, 'specs')}
 								/>
 							</Col>
