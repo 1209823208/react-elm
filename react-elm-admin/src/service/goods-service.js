@@ -3,7 +3,7 @@ import axios from 'axios';
 const _mm = new MUtil();
 export default class GoodsService {
     getCategoryBytaurants(restaurant_id) {
-        let url = 'shopping/getcategory' + restaurant_id;
+        let url = 'shopping/getcategory/' + restaurant_id;
         return _mm.get(url);
     }
     addCategory(paramsObj) {

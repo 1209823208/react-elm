@@ -42,9 +42,14 @@ export default class ShopService {
             params = paramsObj;
         return _mm.post(url, params);
     }
-    delShop(id){
-        let url = 'shopping/restaurant/'+id,
+    delShop(id) {
+        let url = 'shopping/restaurant/' + id,
             params = {};
         return _mm.delete(url, params);
+    }
+    addShop(paramsObj) {
+        let url = 'shopping/addShop',
+            params = paramsObj;
+        return _mm.post(url, params);
     }
 }

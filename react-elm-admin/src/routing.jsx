@@ -7,6 +7,9 @@ import UserList from 'containers/userList/index';
 import ShopList from 'containers/shopList/index';
 import AddGoods from 'containers/goodsList/add';
 import GoodsList from 'containers/goodsList/index';
+import OrderList from 'containers/orderList/index';
+import AdminList from 'containers/adminList/index';
+import AddShop from 'containers/shopList/add';
 
 export const route_list = (
     <LayoutIndex>
@@ -17,6 +20,10 @@ export const route_list = (
             <Route path= '/shop' component={ShopList} />
             <Route path= '/goods' component={GoodsList} />
             <Route path= '/addGoods/:restaurant_id' component={AddGoods} />
+            <Route path= '/order' component={OrderList} />
+            <Route path= '/adminList' component={AdminList} />
+            <Route path= '/addShop' component={AddShop} />
+
             {/* 路由从上向下匹配，匹配成功 break,匹配不到就执行最后一行ErrorPage页面 */}
             <Route component={ErrorPage} />
         </Switch>
