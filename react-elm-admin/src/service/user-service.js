@@ -120,4 +120,8 @@ export default class User {
             params = {};
         return _mm.get(url, params);
     }
+    getVisitor(){
+        let url = 'v1/user/city/count';
+        return _mm.get(url); 
+    }
 }

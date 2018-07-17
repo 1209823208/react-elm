@@ -59,7 +59,7 @@ export default class NavSide extends React.Component {
 							<Link to={'/addShop'}>添加商铺</Link>
 						</Menu.Item>
 						<Menu.Item key="10">
-						添加商品
+							添加商品
 							{/* <Link to={'/addShop'}>添加商品</Link> */}
 						</Menu.Item>
 					</SubMenu>
@@ -72,7 +72,9 @@ export default class NavSide extends React.Component {
 							</span>
 						}
 					>
-						<Menu.Item key="12">用户分布</Menu.Item>
+						<Menu.Item key="12">
+							<Link to={'/visitor'}>用户分布</Link>
+						</Menu.Item>
 					</SubMenu>
 					<SubMenu
 						key="13"
@@ -83,7 +85,9 @@ export default class NavSide extends React.Component {
 							</span>
 						}
 					>
-						<Menu.Item key="14">文本编辑</Menu.Item>
+						<Menu.Item key="14">
+							<Link to={'/p-edit'}>文本编辑</Link>
+						</Menu.Item>
 					</SubMenu>
 					<SubMenu
 						key="15"

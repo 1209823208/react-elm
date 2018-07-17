@@ -10,6 +10,8 @@ import GoodsList from 'containers/goodsList/index';
 import OrderList from 'containers/orderList/index';
 import AdminList from 'containers/adminList/index';
 import AddShop from 'containers/shopList/add';
+import Visitor from 'containers/charts/index';
+import Editor from 'containers/PEdit/index';
 
 export const route_list = (
     <LayoutIndex>
@@ -23,7 +25,8 @@ export const route_list = (
             <Route path= '/order' component={OrderList} />
             <Route path= '/adminList' component={AdminList} />
             <Route path= '/addShop' component={AddShop} />
-
+            <Route path= '/visitor' component={Visitor} />
+            <Route path= '/p-edit' component={Editor} />
             {/* 路由从上向下匹配，匹配成功 break,匹配不到就执行最后一行ErrorPage页面 */}
             <Route component={ErrorPage} />
         </Switch>
