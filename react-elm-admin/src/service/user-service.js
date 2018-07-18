@@ -9,22 +9,31 @@ export default class User {
             params = { ...params_obj,
                 pip_type: 1
             };
-        return _mm.post(url, params, true).then((res) => {
-            if (res['token']) {
-                localStorage.setItem('id_token', res['token'])
+        return _mm.post(url, params, false).then((res) => {
+            if (res.status === 1) {
+               return  this.getUserInfo();
+            }else{
+                return res
             }
-            return res;
         });
     }
-    logout(){
+    logout() {
         let url = 'admin/singout',
             params = {};
         return _mm.get(url, params, false);
     }
-    getUserList(paramsObj){
-        let offset = paramsObj.current>0?paramsObj.current-1:0,
-        limit=paramsObj.pageSize;
-        let url = '/v1/users/list?offset='+offset+'&limit='+limit,
+    getUserInfo() {
+        let url = 'admin/info',
+            params = {};
+        return _mm.get(url, params).then((res)=>{
+            localStorage.setItem('user_info_authorization', JSON.stringify(res.data));
+            return res;
+        });
+    }
+    getUserList(paramsObj) {
+        let offset = paramsObj.current > 0 ? paramsObj.current - 1 : 0,
+            limit = paramsObj.pageSize;
+        let url = '/v1/users/list?offset=' + offset + '&limit=' + limit,
             params = {};
         return _mm.get(url, params);
     }
@@ -113,15 +122,15 @@ export default class User {
         let url = 'admin/count';
         return _mm.get(url);
     }
-    getAdminList(paramsObj){
-        let offset = paramsObj.current>0?paramsObj.current-1:0,
-        limit=paramsObj.pageSize;
-        let url = '/admin/all?offset='+offset+'&limit='+limit,
+    getAdminList(paramsObj) {
+        let offset = paramsObj.current > 0 ? paramsObj.current - 1 : 0,
+            limit = paramsObj.pageSize;
+        let url = '/admin/all?offset=' + offset + '&limit=' + limit,
             params = {};
         return _mm.get(url, params);
     }
-    getVisitor(){
+    getVisitor() {
         let url = 'v1/user/city/count';
-        return _mm.get(url); 
+        return _mm.get(url);
     }
 }

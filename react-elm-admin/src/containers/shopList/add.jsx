@@ -6,8 +6,6 @@ import {
 	Input,
 	Button,
 	message,
-	TreeSelect,
-	Radio,
 	Cascader,
 	Switch,
 	InputNumber,
@@ -18,9 +16,7 @@ import {
 } from 'antd';
 import moment from 'moment';
 import ShopService from 'service/shop-service';
-const TreeNode = TreeSelect.TreeNode;
 const _shop = new ShopService();
-const RadioGroup = Radio.Group;
 const Option = Select.Option;
 const format = 'HH:mm';
 
@@ -28,7 +24,6 @@ export default class AddShop extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			restaurant_id: this.props.match.params.restaurant_id || '',
 			categoryList: [],
 			addshopMes: {
 				// 存储商品信息
@@ -76,7 +71,6 @@ export default class AddShop extends React.Component {
 	}
 	getCategory() {
 		_shop.getCategory().then((res) => {
-			console.log('res', res);
 			if (res && res.length > 0) {
 				let category_one = res[0].value,
 					category_two =
