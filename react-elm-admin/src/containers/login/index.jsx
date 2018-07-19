@@ -13,9 +13,11 @@ class Login extends React.Component {
 		var formData = this.props.form.getFieldsValue();
 		_user.login(formData).then((res) => {
 			if (res.status === 1) {
-        console.log('props',this.props);
-        const pathname = this.props.location.state?this.props.location.state.from.pathname :'/home';
-				this.props.history.push(pathname); // 路由跳转
+				console.log('props', this.props);
+				const { from } = this.props.location.state || { from: { pathname: '/home', search: '?bread_one=首页' } };
+				this.props.history.push({
+					from
+				}); // 路由跳转
 			} else {
 				message.info(res.message);
 			}

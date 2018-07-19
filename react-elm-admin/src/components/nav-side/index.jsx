@@ -9,21 +9,57 @@ export default class NavSide extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: ''
+			defaultOpenKeys: this.props.defaultOpenKeys !== '' ? this.props.defaultOpenKeys : '/home',
+			defaultSelectedKeys: this.props.pathname !== '' ? this.props.pathname : '/home'
+
+			// defaultOpenKeys: 'sub2',
+			// defaultSelectedKeys: '/user'
 		};
+	}
+	componentDidUpdate(prevProps) {
+		if (this.props.pathname !== prevProps.pathname) {
+			let defaultOpenKeys = this.props.defaultOpenKeys !== '' ? this.props.defaultOpenKeys : '/home',
+				defaultSelectedKeys = this.props.pathname !== '' ? this.props.pathname : '/home';
+			this.setState({
+				defaultOpenKeys: defaultOpenKeys,
+				defaultSelectedKeys: defaultSelectedKeys
+			});
+		}
+	}
+	onClickSub(item, key, keyPath) {
+		console.log('11', item, key, keyPath);
+	}
+	onOpenChange(openKeys) {
+		console.log('openKeys', openKeys);
+		let defaultOpenKeys = openKeys[1],
+			defaultSelectedKeys = openKeys[0];
+		this.setState({
+			defaultOpenKeys,
+			defaultSelectedKeys
+		});
 	}
 	render() {
 		return (
 			<Sider>
 				<div className="logo" />
-				<Menu theme="dark" defaultSelectedKeys={[ '1' ]} mode="inline">
-					<Menu.Item key="1">
+				<Menu
+					theme="dark"
+					defaultOpenKeys={[ this.state.defaultOpenKeys ]}
+					defaultSelectedKeys={[ this.state.defaultSelectedKeys ]}
+					openKeys={[ this.state.defaultOpenKeys ]}
+					selectedKeys={[ this.state.defaultSelectedKeys ]}
+					onClick={(item, key, keyPath) => this.onClickSub(item, key, keyPath)}
+					onOpenChange={(openKeys) => this.onOpenChange(openKeys)}
+					mode="inline"
+				>
+					<Menu.Item key="/home">
 						<Icon type="appstore" />
-						<span>
+						<span className="sideIndex">
 							<Link
 								to={{
 									pathname: '/home',
-									search: '?project=首页'
+									search: '?bread_one=首页',
+									state: { defaultOpenKeys: '/home' }
 								}}
 							>
 								首页
@@ -31,7 +67,7 @@ export default class NavSide extends React.Component {
 						</span>
 					</Menu.Item>
 					<SubMenu
-						key="2"
+						key="sub2"
 						title={
 							<span>
 								<Icon type="file" />
@@ -39,51 +75,56 @@ export default class NavSide extends React.Component {
 							</span>
 						}
 					>
-						<Menu.Item key="3">
+						<Menu.Item key="/user">
 							<Link
 								to={{
 									pathname: '/user',
-									search: '?project=首页/数据管理/用户列表'
+									search: '?bread_one=首页&bread_two=数据管理&bread_three=用户列表',
+									state: { defaultOpenKeys: 'sub2' }
 								}}
 							>
 								用户列表
 							</Link>
 						</Menu.Item>
-						<Menu.Item key="4">
+						<Menu.Item key="/shop">
 							<Link
 								to={{
 									pathname: '/shop',
-									search: '?project=首页/数据管理/商家列表'
+									search: '?bread_one=首页&bread_two=数据管理&bread_three=商家列表',
+									state: { defaultOpenKeys: 'sub2' }
 								}}
 							>
 								商家列表
 							</Link>
 						</Menu.Item>
-						<Menu.Item key="5">
+						<Menu.Item key="/goods">
 							<Link
 								to={{
 									pathname: '/goods',
-									search: '?project=首页/数据管理/食品列表'
+									search: '?bread_one=首页&bread_two=数据管理&bread_three=食品列表',
+									state: { defaultOpenKeys: 'sub2' }
 								}}
 							>
 								食品列表
 							</Link>
 						</Menu.Item>
-						<Menu.Item key="6">
+						<Menu.Item key="/order">
 							<Link
 								to={{
 									pathname: '/order',
-									search: '?project=首页/数据管理/订单列表'
+									search: '?bread_one=首页&bread_two=数据管理&bread_three=订单列表',
+									state: { defaultOpenKeys: 'sub2' }
 								}}
 							>
 								订单列表
 							</Link>
 						</Menu.Item>
-						<Menu.Item key="7">
+						<Menu.Item key="/adminList">
 							<Link
 								to={{
 									pathname: '/adminList',
-									search: '?project=首页/数据管理/管理员列表'
+									search: '?bread_one=首页&bread_two=数据管理&bread_three=管理员列表',
+									state: { defaultOpenKeys: 'sub2' }
 								}}
 							>
 								管理员列表
@@ -91,7 +132,7 @@ export default class NavSide extends React.Component {
 						</Menu.Item>
 					</SubMenu>
 					<SubMenu
-						key="8"
+						key="sub3"
 						title={
 							<span>
 								<Icon type="plus" />
@@ -99,21 +140,23 @@ export default class NavSide extends React.Component {
 							</span>
 						}
 					>
-						<Menu.Item key="9">
+						<Menu.Item key="/addShop">
 							<Link
 								to={{
 									pathname: '/addShop',
-									search: '?project=首页/添加数据/添加商铺'
+									search: '?bread_one=首页&bread_two=添加数据&bread_three=添加商铺',
+									state: { defaultOpenKeys: 'sub3' }
 								}}
 							>
 								添加商铺
 							</Link>
 						</Menu.Item>
-						<Menu.Item key="10">
+						<Menu.Item key="/addGoods">
 							<Link
 								to={{
 									pathname: '/addGoods',
-									search: '?project=首页/添加数据/添加商品'
+									search: '?bread_one=首页&bread_two=添加数据&bread_three=添加商品',
+									state: { defaultOpenKeys: 'sub3' }
 								}}
 							>
 								添加商品
@@ -121,7 +164,7 @@ export default class NavSide extends React.Component {
 						</Menu.Item>
 					</SubMenu>
 					<SubMenu
-						key="11"
+						key="sub4"
 						title={
 							<span>
 								<Icon type="star-o" />
@@ -129,11 +172,12 @@ export default class NavSide extends React.Component {
 							</span>
 						}
 					>
-						<Menu.Item key="12">
+						<Menu.Item key="/visitor">
 							<Link
 								to={{
 									pathname: '/visitor',
-									search: '?project=首页/图表/用户分布'
+									search: '?bread_one=首页&bread_two=图表&bread_three=用户分布',
+									state: { defaultOpenKeys: 'sub4' }
 								}}
 							>
 								用户分布
@@ -141,7 +185,7 @@ export default class NavSide extends React.Component {
 						</Menu.Item>
 					</SubMenu>
 					<SubMenu
-						key="13"
+						key="sub5"
 						title={
 							<span>
 								<Icon type="form" />
@@ -149,11 +193,12 @@ export default class NavSide extends React.Component {
 							</span>
 						}
 					>
-						<Menu.Item key="14">
+						<Menu.Item key="/p-edit">
 							<Link
 								to={{
 									pathname: '/p-edit',
-									search: '?project=首页/编辑/文本编辑'
+									search: '?bread_one=首页&bread_two=编辑&bread_three=文本编辑',
+									state: { defaultOpenKeys: 'sub5' }
 								}}
 							>
 								文本编辑
@@ -161,7 +206,7 @@ export default class NavSide extends React.Component {
 						</Menu.Item>
 					</SubMenu>
 					<SubMenu
-						key="15"
+						key="sub6"
 						title={
 							<span>
 								<Icon type="setting" />
@@ -169,11 +214,12 @@ export default class NavSide extends React.Component {
 							</span>
 						}
 					>
-						<Menu.Item key="16">
+						<Menu.Item key="/admin-set">
 							<Link
 								to={{
 									pathname: '/admin-set',
-									search: '?project=首页/设置/管理员设置'
+									search: '?bread_one=首页&bread_two=设置&bread_three=管理员设置',
+									state: { defaultOpenKeys: 'sub6' }
 								}}
 							>
 								管理员设置
@@ -181,7 +227,7 @@ export default class NavSide extends React.Component {
 						</Menu.Item>
 					</SubMenu>
 					<SubMenu
-						key="17"
+						key="sub7"
 						title={
 							<span>
 								<Icon type="exclamation-circle" />
@@ -189,11 +235,12 @@ export default class NavSide extends React.Component {
 							</span>
 						}
 					>
-						<Menu.Item key="18">
+						<Menu.Item key="/explain">
 							<Link
 								to={{
 									pathname: '/explain',
-									search: '?project=首页/说明/说明'
+									search: '?bread_one=首页&bread_two=说明&bread_three=说明',
+									state: { defaultOpenKeys: 'sub7' }
 								}}
 							>
 								说明

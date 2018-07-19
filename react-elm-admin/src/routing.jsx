@@ -2,6 +2,7 @@ import React from 'react';
 import { message } from 'antd';
 
 import { Route, Switch, Redirect } from 'react-router-dom';
+
 import LayoutIndex from 'components/layout/index';
 import ErrorPage from 'components/error/index';
 import Home from 'containers/home/index';
@@ -42,6 +43,7 @@ export const route_list = (
 			<Route exact path="/" component={Home} />
 			<Route
                 path="/home"
+                title="首页"
 				render={(props) => {
 					return requireAuth() ? (
 						<Home />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-
+import queryString from 'query-string';
 import './index.scss';
 import NavSide from 'components/nav-side/index';
 import NavFooter from 'components/nav-footer/index';
@@ -12,38 +12,40 @@ class LayoutIndex extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			bread_crumbs_arr: []
+			bread_crumbs_arr: [],
+			pathname:'',
+			defaultOpenKeys:''
 		};
 	}
 	componentDidMount() {
 		this.getParams();
 	}
-	// componentDidUpdate(){
-	// 	console.log('componentDidUpdate',this.props)
-	// }
-	// componentWillMount(){
-	// 	console.log('componentWillMount',this.props)
-	// }
-	componentWillUpdate() {
-		this.getParams();
+	componentDidUpdate(prevProps) {
+		if (this.props.location.pathname !== prevProps.location.pathname) {
+			this.getParams();
+		}
 	}
 	getParams() {
 		if (this.props) {
-			let search_arr = this.props.location.search ? this.props.location.search.split('?')[1] : '';
-			if (search_arr) {
-				let params = search_arr.split('&');
-				if (params) {
-					for (let i in params) {
-						let m_key = params[i].split('=')[0],
-							m_value = params[i].split('=')[1];
-						if (m_key === 'project') {
-							let bc = m_value.split('/');
-							console.log('bc',bc);
-							
-							return;
-						}
-					}
+			let pathname = this.props.location.pathname,
+			 defaultOpenKeys = typeof this.props.location.state!=='undefined' && typeof this.props.location.state.defaultOpenKeys!=='undefined'?this.props.location.state.defaultOpenKeys:'';
+			if (this.props.location.search) {
+				var parsed = queryString.parse(this.props.location.search);
+				let new_bread_crumbs_arr = [];
+				if (typeof parsed.bread_one !== 'undefined') {
+					new_bread_crumbs_arr.push(parsed.bread_one);
 				}
+				if (typeof parsed.bread_two !== 'undefined') {
+					new_bread_crumbs_arr.push(parsed.bread_two);
+				}
+				if (typeof parsed.bread_three !== 'undefined') {
+					new_bread_crumbs_arr.push(parsed.bread_three);
+				}
+				this.setState({
+					bread_crumbs_arr: new_bread_crumbs_arr,
+					pathname,
+					defaultOpenKeys
+				});
 			}
 		}
 	}
@@ -57,34 +59,33 @@ class LayoutIndex extends React.Component {
 				this.props.history.push('/login'); // 路由跳转
 			});
 		} else {
-			this.props.history.push('/home'); // 路由跳转
+			this.props.history.push({
+				pathname: '/home',
+				search: '?bread_one=首页'
+			}); // 路由跳转
 		}
 	};
 	render() {
-		const bread_crumbs_list = this.state.bread_crumbs_arr.map((item,index)=>{
-			return(
-				<Menu.Item key={{index}}>{{item}}</Menu.Item>
-			)
-		})
 		const menu = (
 			<Menu onClick={this.handleMenuClick}>
-				{{bread_crumbs_list}}
+				<Menu.Item key="1">首页</Menu.Item>
+				<Menu.Item key="2">退出</Menu.Item>
 			</Menu>
 		);
+		const BreadcrumbList = this.state.bread_crumbs_arr.map((item, index) => {
+			return <Breadcrumb.Item key={index}>{item}</Breadcrumb.Item>;
+		});
 		return (
 			<div id="wrapper">
 				<Layout style={{ minHeight: '100vh' }}>
-					<NavSide />
+					<NavSide pathname ={this.state.pathname} defaultOpenKeys={this.state.defaultOpenKeys} />
 					<Layout>
 						<Content style={{ margin: '0 16px' }}>
 							<Layout>
 								<Row>
 									<Col span={22}>
 										<Content>
-											<Breadcrumb style={{ margin: '16px 0' }}>
-												<Breadcrumb.Item>首页</Breadcrumb.Item>
-												<Breadcrumb.Item>11</Breadcrumb.Item>
-											</Breadcrumb>
+											<Breadcrumb style={{ margin: '16px 0' }}>{BreadcrumbList}</Breadcrumb>
 										</Content>
 									</Col>
 									<Col span={2} style={{ lineHeight: 1.8 }}>
