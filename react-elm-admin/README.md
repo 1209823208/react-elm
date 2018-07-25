@@ -27,3 +27,16 @@
     Object.assign合并两个对象
     componentWillReceiveProps生命周期-父子之间传递异步
   ```
+- [x] 食品列表
+  ```
+    清楚input value
+  ``` 
+- [x] 订单列表
+- [x] 管理员列表
+- [x] 添加商铺
+- [x] 添加商品
+- [x] 用户分布
+- [x] 文本编辑
+  ```
+   react-quill插件
+  ```

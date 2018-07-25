@@ -17,6 +17,8 @@ import Visitor from 'containers/charts/index';
 import Editor from 'containers/PEdit/index';
 import AdminSet from 'containers/adminSet/index';
 import Explain from 'containers/explain/index';
+
+import SearchProductDemo from 'containers/searchProductDemo/index';
 export function requireAuth() {
 	const isAuthenticated = localStorage.getItem('user_info_authorization') ? true : false;
 	return isAuthenticated;
@@ -40,6 +42,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 export const route_list = (
 	<LayoutIndex>
 		<Switch>
+		{/* 两种登陆验证 */}
 			<Route exact path="/" component={Home} />
 			<Route
                 path="/home"
@@ -224,6 +227,7 @@ export const route_list = (
 			{/* <Route path="/explain" component={Explain} /> */}
 			<PrivateRoute path="/explain" component={Explain} />
 
+			<PrivateRoute path="/search-product-demo" component={SearchProductDemo} />
 			{/* 路由从上向下匹配，匹配成功 break,匹配不到就执行最后一行ErrorPage页面 */}
 			<Route component={ErrorPage} />
 		</Switch>

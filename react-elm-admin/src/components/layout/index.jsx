@@ -17,13 +17,27 @@ class LayoutIndex extends React.Component {
 			defaultOpenKeys:''
 		};
 	}
+	componentWillMount(){
+		console.log('componentWillMount');
+	}
 	componentDidMount() {
+		console.log('componentDidMount');
 		this.getParams();
 	}
-	componentDidUpdate(prevProps) {
+	componentWillReceiveProps(prevProps){
+		console.log('componentWillReceiveProps');
+	}
+	componentWillUpdate(){
+		console.log('componentWillUpdate');
+	}
+	componentDidUpdate(prevProps,prevState) {
+		console.log('componentDidUpdate');
 		if (this.props.location.pathname !== prevProps.location.pathname) {
 			this.getParams();
 		}
+	}
+	componentWillUnmount(){
+		console.log('componentWillUnmount');
 	}
 	getParams() {
 		if (this.props) {
@@ -49,9 +63,7 @@ class LayoutIndex extends React.Component {
 			}
 		}
 	}
-	// componentWillReceiveProps(){
-	// 	console.log('componentWillReceiveProps',this.props)
-	// }
+
 	handleMenuClick = (e) => {
 		if (e.key === '2') {
 			_user.logout().then((res) => {
@@ -66,6 +78,7 @@ class LayoutIndex extends React.Component {
 		}
 	};
 	render() {
+		console.log('render');
 		const menu = (
 			<Menu onClick={this.handleMenuClick}>
 				<Menu.Item key="1">首页</Menu.Item>

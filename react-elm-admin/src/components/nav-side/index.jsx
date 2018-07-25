@@ -247,6 +247,27 @@ export default class NavSide extends React.Component {
 							</Link>
 						</Menu.Item>
 					</SubMenu>
+					<SubMenu
+						key="sub8"
+						title={
+							<span>
+								<Icon type="exclamation-circle" />
+								<span>官网-demo</span>
+							</span>
+						}
+					>
+						<Menu.Item key="/search-product-demo">
+							<Link
+								to={{
+									pathname: '/search-product-demo',
+									search: '?bread_one=首页&bread_two=官网-React的编程思想demo&bread_three=demo',
+									state: { defaultOpenKeys: 'sub8' }
+								}}
+							>
+								React的编程思想
+							</Link>
+						</Menu.Item>
+					</SubMenu>
 				</Menu>
 			</Sider>
 		);
