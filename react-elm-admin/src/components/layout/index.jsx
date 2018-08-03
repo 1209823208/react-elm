@@ -18,26 +18,26 @@ class LayoutIndex extends React.Component {
 		};
 	}
 	componentWillMount(){
-		console.log('componentWillMount');
+		// console.log('componentWillMount');
 	}
 	componentDidMount() {
-		console.log('componentDidMount');
+		// console.log('componentDidMount');
 		this.getParams();
 	}
 	componentWillReceiveProps(prevProps){
-		console.log('componentWillReceiveProps');
+		// console.log('componentWillReceiveProps');
 	}
 	componentWillUpdate(){
-		console.log('componentWillUpdate');
+		// console.log('componentWillUpdate');
 	}
 	componentDidUpdate(prevProps,prevState) {
-		console.log('componentDidUpdate');
+		// console.log('componentDidUpdate');
 		if (this.props.location.pathname !== prevProps.location.pathname) {
 			this.getParams();
 		}
 	}
 	componentWillUnmount(){
-		console.log('componentWillUnmount');
+		// console.log('componentWillUnmount');
 	}
 	getParams() {
 		if (this.props) {
@@ -78,7 +78,6 @@ class LayoutIndex extends React.Component {
 		}
 	};
 	render() {
-		console.log('render');
 		const menu = (
 			<Menu onClick={this.handleMenuClick}>
 				<Menu.Item key="1">首页</Menu.Item>

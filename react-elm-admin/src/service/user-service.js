@@ -118,10 +118,6 @@ export default class User {
                 });
             }));
     }
-    adminCount() {
-        let url = 'admin/count';
-        return _mm.get(url);
-    }
     getAdminList(paramsObj) {
         let offset = paramsObj.current > 0 ? paramsObj.current - 1 : 0,
             limit = paramsObj.pageSize;

@@ -10,9 +10,9 @@ export default class UserList extends React.Component {
 		this.state = {
 			userList: [],
 			pagination: {
-				pageSize:20,
-				current:1,
-				total:0,
+				pageSize: 20,
+				current: 1,
+				total: 0,
 			},
 			loading: false
 		};
@@ -21,13 +21,13 @@ export default class UserList extends React.Component {
 		//获取总的数量
 		this.getUserCount();
 	}
-	getUserCount(){
-		_user.getUserCount().then((res)=>{
+	getUserCount() {
+		_user.getUserCount().then((res) => {
 			const pager = { ...this.state.pagination };
 			pager.total = res.count;
 			this.setState({
-				pagination:pager
-			},()=>{
+				pagination: pager
+			}, () => {
 				this.getUserList()
 			});
 		})
@@ -35,10 +35,9 @@ export default class UserList extends React.Component {
 	handleTableChange = (pagination) => {
 		const pager = { ...this.state.pagination };
 		pager.current = pagination.current;
-		console.log('pager2',pager)
-    this.setState({
-      pagination: pager,
-    },()=>{
+		this.setState({
+			pagination: pager,
+		}, () => {
 			this.getUserList()
 		});
 	}

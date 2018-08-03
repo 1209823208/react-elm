@@ -4,7 +4,7 @@
 ```
 ## 技术栈
 ```
-  react16.4+react-router-dom4+axios
+  react16.4+react-router-dom4+axios+react-loadable懒加载
 ```
 ##  第三方插件
 ```
@@ -12,7 +12,8 @@
     [antd](https://ant.design/docs/react/introduce-cn)
   2、布局 bootstrap
   3、图标 font-awesome
-  
+  4、react-quill
+  5、prop-types
 ```
 # 功能列表
 
@@ -39,4 +40,16 @@
 - [x] 文本编辑
   ```
    react-quill插件
+  ```
+- [x] react官网demo
+  ```
+   React的编程思想
+   Context上下文
+   refs
+   fragments
+   HOC(高阶组件)
+   portal(插槽)
+   render-props(渲染属性)
+   prop-types(类型检查)
+   uncontrolled-components(不受控组件)
   ```
