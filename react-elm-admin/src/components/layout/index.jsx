@@ -117,6 +117,7 @@ class LayoutIndex extends React.Component {
 							</Layout>
 							<div style={{ padding: 24, background: '#fff', minHeight: 360 }}>{this.props.children}</div>
 						</Content>
+						{/* <p></p> */}
 						<NavFooter />
 					</Layout>
 				</Layout>

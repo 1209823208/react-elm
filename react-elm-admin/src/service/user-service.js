@@ -10,11 +10,12 @@ export default class User {
                 pip_type: 1
             };
         return _mm.post(url, params, false).then((res) => {
-            if (res.status === 1) {
-               return  this.getUserInfo();
-            }else{
-                return res
-            }
+            return res;
+            // if (res.status === 1) {
+            //     return this.getUserInfo();
+            // } else {
+            //     return res
+            // }
         });
     }
     logout() {
@@ -25,9 +26,19 @@ export default class User {
     getUserInfo() {
         let url = 'admin/info',
             params = {};
-        return _mm.get(url, params).then((res)=>{
-            localStorage.setItem('user_info_authorization', JSON.stringify(res.data));
-            return res;
+        return _mm.get(url, params).then((res) => {
+            console.log('res',res);
+            if (res.status === 0) {
+                localStorage.setItem('user_info_authorization', JSON.stringify(res.type));
+                let m = { ...res
+                };
+                m.status = 1;
+                console.log('m',m);
+                return m;
+            } else {
+                localStorage.setItem('user_info_authorization', JSON.stringify(res.data));
+                return res;
+            }
         });
     }
     getUserList(paramsObj) {
