@@ -1,7 +1,11 @@
 export const sidebarData = [{
-		key: '/home',
+		key: 'sub1',
 		title: {
 			icon: 'appstore',
+			text: '首页',
+		},
+		children: [{
+			key: '/home',
 			text: '首页',
 			to: {
 				pathname: '/home',
@@ -9,9 +13,8 @@ export const sidebarData = [{
 				state: {
 					defaultOpenKeys: '/home'
 				}
-			},
-			path: '/home'
-		}
+			}
+		}]
 	},
 	{
 		key: 'sub2',
@@ -29,7 +32,6 @@ export const sidebarData = [{
 						defaultOpenKeys: 'sub2'
 					}
 				},
-				path: '/user'
 			},
 			{
 				key: '/shop',
@@ -41,7 +43,6 @@ export const sidebarData = [{
 						defaultOpenKeys: 'sub2'
 					}
 				},
-				path: '/shop'
 			},
 			{
 				key: '/goods',
@@ -53,7 +54,6 @@ export const sidebarData = [{
 						defaultOpenKeys: 'sub2'
 					}
 				},
-				path: '/goods'
 			},
 			{
 				key: '/order',
@@ -65,7 +65,6 @@ export const sidebarData = [{
 						defaultOpenKeys: 'sub2'
 					}
 				},
-				path: '/order'
 			},
 			{
 				key: '/adminList',
@@ -77,7 +76,6 @@ export const sidebarData = [{
 						defaultOpenKeys: 'sub2'
 					}
 				},
-				path: '/adminList'
 			}
 		]
 	},
@@ -96,8 +94,7 @@ export const sidebarData = [{
 					state: {
 						defaultOpenKeys: 'sub3'
 					}
-				},
-				path: '/addShop'
+				}
 			},
 			{
 				key: '/addGoods',
@@ -108,8 +105,7 @@ export const sidebarData = [{
 					state: {
 						defaultOpenKeys: 'sub3'
 					}
-				},
-				path: '/addGoods'
+				}
 			}
 		]
 	},
@@ -128,8 +124,7 @@ export const sidebarData = [{
 				state: {
 					defaultOpenKeys: 'sub4'
 				}
-			},
-			path: '/visitor'
+			}
 		}]
 	},
 	{
@@ -147,8 +142,7 @@ export const sidebarData = [{
 				state: {
 					defaultOpenKeys: 'sub5'
 				}
-			},
-			path: '/p-edit'
+			}
 		}]
 	},
 	{
@@ -166,8 +160,7 @@ export const sidebarData = [{
 				state: {
 					defaultOpenKeys: 'sub6'
 				}
-			},
-			path: '/admin-set'
+			}
 		}]
 	},
 	{
@@ -185,8 +178,7 @@ export const sidebarData = [{
 				state: {
 					defaultOpenKeys: 'sub7'
 				}
-			},
-			path: '/explain'
+			}
 		}]
 	},
 	{
@@ -196,17 +188,105 @@ export const sidebarData = [{
 			text: '官网-demo'
 		},
 		children: [{
-			key: '/search-product-demo',
-			text: 'React的编程思想',
-			to: {
-				pathname: '/search-product-demo',
-				search: '?bread_one=首页&bread_two=官网-React的编程思想demo&bread_three=demo',
-				state: {
-					defaultOpenKeys: 'sub8'
+				key: '/search-product-demo',
+				text: 'React的编程思想',
+				to: {
+					pathname: '/search-product-demo',
+					search: '?bread_one=首页&bread_two=官网-React的编程思想demo&bread_three=demo',
+					state: {
+						defaultOpenKeys: 'sub8'
+					}
 				}
 			},
-			path: '/search-product-demo'
-		}]
+			{
+				key: '/react-context-demo',
+				text: 'Context上下文',
+				to: {
+					pathname: '/react-context-demo',
+					search: '?bread_one=首页&bread_two=官网-Context上下文&bread_three=demo',
+					state: {
+						defaultOpenKeys: 'sub8'
+					}
+				}
+			},
+			{
+				key: '/react-refs-demo',
+				text: 'refs',
+				to: {
+					pathname: '/react-refs-demo',
+					search: '?bread_one=首页&bread_two=官网-refs&bread_three=demo',
+					state: {
+						defaultOpenKeys: 'sub8'
+					}
+				}
+			},
+			{
+				key: '/react-fragments-demo',
+				text: 'fragments',
+				to: {
+					pathname: '/react-fragments-demo',
+					search: '?bread_one=首页&bread_two=官网-fragments&bread_three=demo',
+					state: {
+						defaultOpenKeys: 'sub8'
+					}
+				}
+			},
+			{
+				key: '/higher-order-component',
+				text: 'HOC(高阶组件)',
+				to: {
+					pathname: '/higher-order-component',
+					search: '?bread_one=首页&bread_two=官网-higher-order-component&bread_three=demo',
+					state: {
+						defaultOpenKeys: 'sub8'
+					}
+				}
+			},
+			{
+				key: '/portal-demo',
+				text: 'portal(插槽)',
+				to: {
+					pathname: '/portal-demo',
+					search: '?bread_one=首页&bread_two=官网-portal插槽&bread_three=demo',
+					state: {
+						defaultOpenKeys: 'sub8'
+					}
+				}
+			},
+			{
+				key: '/render-props',
+				text: 'render-props(渲染属性)',
+				to: {
+					pathname: '/render-props',
+					search: '?bread_one=首页&bread_two=官网-render-props&bread_three=demo',
+					state: {
+						defaultOpenKeys: 'sub8'
+					}
+				}
+			},
+			{
+				key: '/prop-types',
+				text: 'prop-types(类型检查)',
+				to: {
+					pathname: '/prop-types',
+					search: '?bread_one=首页&bread_two=官网-prop-types(类型检查)&bread_three=demo',
+					state: {
+						defaultOpenKeys: 'sub8'
+					}
+				}
+			},
+			{
+				key: '/uncontrolled-components',
+				text: 'uncontrolled-components(不受控组件)',
+				to: {
+					pathname: '/uncontrolled-components',
+					search: '?bread_one=首页&bread_two=官网-uncontrolled-components(不受控组件)&bread_three=demo',
+					state: {
+						defaultOpenKeys: 'sub8'
+					}
+				}
+			}
+		]
 	}
 
 ];
