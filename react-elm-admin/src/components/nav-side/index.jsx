@@ -27,10 +27,10 @@ export default class NavSide extends React.Component {
 		}
 	}
 	onClickSub(item, key, keyPath) {
-		console.log('11', item, key, keyPath);
+		// console.log('11', item, key, keyPath);
 	}
 	onOpenChange(openKeys) {
-		console.log('openKeys', openKeys);
+		// console.log('openKeys', openKeys);
 		let defaultOpenKeys = openKeys[1],
 			defaultSelectedKeys = openKeys[0];
 		this.setState({
@@ -265,6 +265,94 @@ export default class NavSide extends React.Component {
 								}}
 							>
 								React的编程思想
+							</Link>
+						</Menu.Item>
+						<Menu.Item key="/react-context-demo">
+							<Link
+								to={{
+									pathname: '/react-context-demo',
+									search: '?bread_one=首页&bread_two=官网-Context上下文&bread_three=demo',
+									state: { defaultOpenKeys: 'sub8' }
+								}}
+							>
+								Context上下文
+							</Link>
+						</Menu.Item>
+						<Menu.Item key="/react-refs-demo">
+							<Link
+								to={{
+									pathname: '/react-refs-demo',
+									search: '?bread_one=首页&bread_two=官网-refs&bread_three=demo',
+									state: { defaultOpenKeys: 'sub8' }
+								}}
+							>
+								refs
+							</Link>
+						</Menu.Item>
+						<Menu.Item key="/react-fragments-demo">
+							<Link
+								to={{
+									pathname: '/react-fragments-demo',
+									search: '?bread_one=首页&bread_two=官网-fragments&bread_three=demo',
+									state: { defaultOpenKeys: 'sub8' }
+								}}
+							>
+								fragments
+							</Link>
+						</Menu.Item>
+						<Menu.Item key="/higher-order-component">
+							<Link
+								to={{
+									pathname: '/higher-order-component',
+									search: '?bread_one=首页&bread_two=官网-higher-order-component&bread_three=demo',
+									state: { defaultOpenKeys: 'sub8' }
+								}}
+							>
+								HOC(高阶组件)
+							</Link>
+						</Menu.Item>
+						<Menu.Item key="/portal-demo">
+							<Link
+								to={{
+									pathname: '/portal-demo',
+									search: '?bread_one=首页&bread_two=官网-portal插槽&bread_three=demo',
+									state: { defaultOpenKeys: 'sub8' }
+								}}
+							>
+								portal(插槽)
+							</Link>
+						</Menu.Item>
+						<Menu.Item key="/render-props">
+							<Link
+								to={{
+									pathname: '/render-props',
+									search: '?bread_one=首页&bread_two=官网-render-props&bread_three=demo',
+									state: { defaultOpenKeys: 'sub8' }
+								}}
+							>
+								render-props(渲染属性)
+							</Link>
+						</Menu.Item>
+						<Menu.Item key="/prop-types">
+							<Link
+								to={{
+									pathname: '/prop-types',
+									search: '?bread_one=首页&bread_two=官网-prop-types(类型检查)&bread_three=demo',
+									state: { defaultOpenKeys: 'sub8' }
+								}}
+							>
+								prop-types(类型检查)
+							</Link>
+						</Menu.Item>
+						<Menu.Item key="/uncontrolled-components">
+							<Link
+								to={{
+									pathname: '/uncontrolled-components',
+									search: '?bread_one=首页&bread_two=官网-uncontrolled-components(不受控组件)&bread_three=demo',
+									state: { defaultOpenKeys: 'sub8' }
+								}}
+							>
+								uncontrolled-components(不受控组件)
 							</Link>
 						</Menu.Item>
 					</SubMenu>

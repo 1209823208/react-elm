@@ -15,13 +15,15 @@ class Login extends React.Component {
 			if (res.status === 1) {
 				const { from } = this.props.location.state || { from: { pathname: '/home', search: '?bread_one=首页' } };
 				console.log('from', from);
+				localStorage.setItem('user_info_authorization', 'pip');
+
 				this.props.history.push(
 					from
 				); // 路由跳转
 			} else {
 				message.info(res.message);
 			}
-		});
+		})
 	};
 
 	render() {
@@ -30,7 +32,7 @@ class Login extends React.Component {
 			<div id="login">
 				<p className="login-title">elm后台管理系统</p>
 				<div className="login-content">
-					<Form className="login-form" onSubmit={this.handleSubmit.bind(this)}>
+					<Form className="login-form">
 						<FormItem>
 							<Input
 								prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -47,7 +49,7 @@ class Login extends React.Component {
 							/>
 						</FormItem>
 						<FormItem>
-							<Button type="primary" htmlType="submit" className="login-form-button">
+							<Button type="primary" htmlType="submit" className="login-form-button" onClick={this.handleSubmit.bind(this)}>
 								Log in
 							</Button>
 						</FormItem>
